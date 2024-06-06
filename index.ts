@@ -5,6 +5,7 @@ import yargs from 'yargs'
 import chalk from 'chalk';
 import Resolver from 'jest-resolve';
 import fs from 'node:fs';
+import { Worker } from "jest-worker";
 
 const rootMap = join(dirname(fileURLToPath(import.meta.url)), 'product');
 
@@ -116,4 +117,4 @@ if (options?.output) {
     fs.writeFileSync(options.output, output, 'utf-8');
 }
 
-worker.terminate();
+worker.end();
