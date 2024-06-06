@@ -28,6 +28,7 @@
   "dependencies": {
     "@babel/core": "^7.24.6",
     "@babel/plugin-transform-modules-commonjs": "^7.24.6",
+    "@oclif/core": "^4.0.2",
     "@types/yargs": "^17.0.32",
     "chalk": "^5.0.1",
     "jest-haste-map": "^27.5.1",
