@@ -14,6 +14,9 @@ importers:
       '@babel/plugin-transform-modules-commonjs':
         specifier: ^7.24.6
         version: 7.24.6(@babel/core@7.24.6)
+      '@types/yargs':
+        specifier: ^17.0.32
+        version: 17.0.32
       chalk:
         specifier: ^5.0.1
         version: 5.3.0
@@ -33,6 +36,9 @@ importers:
       '@changesets/cli':
         specifier: ^2.27.5
         version: 2.27.5
+      '@types/babel__core':
+        specifier: ^7.20.5
+        version: 7.20.5
       '@types/node':
         specifier: ^20.14.1
         version: 20.14.1
@@ -634,6 +640,18 @@ packages:
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
 
+  '@types/babel__core@7.20.5':
+    resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
+
+  '@types/babel__generator@7.6.8':
+    resolution: {integrity: sha512-ASsj+tpEDsEiFr1arWrlN6V3mdfjRMZt6LtK/Vp/kreFLnr5QH5+DhvD5nINYZXzwJvXeGq+05iUXcAzVrqWtw==}
+
+  '@types/babel__template@7.4.4':
+    resolution: {integrity: sha512-h/NUaSyG5EyxBIp8YRxo4RMe2/qQgvyowRwVMzhYhBCONbW8PUsg4lkFMrhgZhUe5z3L3MiLDuvyJ/CaPa2A8A==}
+
+  '@types/babel__traverse@7.20.6':
+    resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
+
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
@@ -669,6 +687,9 @@ packages:
 
   '@types/yargs@16.0.9':
     resolution: {integrity: sha512-tHhzvkFXZQeTECenFoRljLBYPZJ7jAVxqqtEI0qTLOmuultnFp4I9yKE17vTuhf7BkhCu7I4XuemPgikDVuYqA==}
+
+  '@types/yargs@17.0.32':
+    resolution: {integrity: sha512-xQ67Yc/laOG5uMfX/093MRlGGCIBzZMarVa+gfNKJxWAIgykYpVGkBdbqEzGDDfCrVUj6Hiff4mTZ5BA6TmAog==}
 
   acorn-walk@8.3.2:
     resolution: {integrity: sha512-cjkyv4OtNCIeqhHrfS81QWXoCBPExR/J62oyEqepVw8WaQeSqpW2uhuLPh1m9eWhDuOo/jUXVTlifvesOWp/4A==}
@@ -2634,6 +2655,27 @@ snapshots:
 
   '@tsconfig/node16@1.0.4': {}
 
+  '@types/babel__core@7.20.5':
+    dependencies:
+      '@babel/parser': 7.24.6
+      '@babel/types': 7.24.6
+      '@types/babel__generator': 7.6.8
+      '@types/babel__template': 7.4.4
+      '@types/babel__traverse': 7.20.6
+
+  '@types/babel__generator@7.6.8':
+    dependencies:
+      '@babel/types': 7.24.6
+
+  '@types/babel__template@7.4.4':
+    dependencies:
+      '@babel/parser': 7.24.6
+      '@babel/types': 7.24.6
+
+  '@types/babel__traverse@7.20.6':
+    dependencies:
+      '@babel/types': 7.24.6
+
   '@types/estree@1.0.5': {}
 
   '@types/graceful-fs@4.1.9':
@@ -2665,6 +2707,10 @@ snapshots:
   '@types/yargs-parser@21.0.3': {}
 
   '@types/yargs@16.0.9':
+    dependencies:
+      '@types/yargs-parser': 21.0.3
+
+  '@types/yargs@17.0.32':
     dependencies:
       '@types/yargs-parser': 21.0.3
 
