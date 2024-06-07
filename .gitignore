@@ -2,6 +2,7 @@
 *-error.log
 **/.DS_Store
 /.idea
+/.vscode
 /dist
 /tmp
 /node_modules
