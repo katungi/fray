@@ -61,14 +61,14 @@
     ],
     "topicSeparator": " ",
     "topics": {
-      "hello": {
-        "description": "Say hello to the world and others"
+      "minify": {
+        "description": "Minify JavaScript and CSS files"
       }
     }
   },
   "repository": "katungi/fray",
   "scripts": {
-    "build": "shx rm -rf dist && tsc -b",
+    "build": "tsc -b", 
     "lint": "eslint . --ext .ts",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn lint",

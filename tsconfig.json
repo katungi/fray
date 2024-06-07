@@ -8,7 +8,7 @@
     "target": "es2022",
     "moduleResolution": "Bundler", 
     "allowJs": true,
-    "noEmit": true,
+    "noEmit": false,
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
