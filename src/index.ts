@@ -1,6 +1,6 @@
 import { Command, Flags, Args } from "@oclif/core";
 import chalk from "chalk";
-import { bundle } from "../bundler/bundler";
+import { bundle } from "./bundler/bundler";
 import fs from 'fs';
 
 
