@@ -1,5 +1,6 @@
 # Fray - A simple JavaScript Module Bundler
 
+🚧 This package is in very early development and does not cater for most use cases. 🚧
 ## Overview
 
 Fray is a JavaScript module bundler designed to streamline the process of managing and bundling JavaScript files and their dependencies. It leverages Jest Haste Map for efficient file management and dependency resolution, and uses Babel for code transformation. This document outlines the current features of Fray and provides a roadmap for future enhancements.
