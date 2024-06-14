@@ -1,13 +1,12 @@
 import JestHasteMap from 'jest-haste-map';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
+import { join } from 'path';
 import Resolver from 'jest-resolve';
 import fs from 'fs';
 import { Worker } from 'jest-worker';
 import { transformFile } from './worker';
 import { resolveModuleDependencies } from './resolver';
 
-const rootMap = join(dirname(fileURLToPath(import.meta.url)), '../product');
+const rootMap = join(__dirname, '../product');
 
 //@ts-ignore
 const hasteMap = new JestHasteMap.default({
@@ -25,7 +24,7 @@ const wrapModule = (id: number, code: string) => `define(${id}, function(require
 export async function bundle(entrypoint: string, output: string | undefined) {
     const { hasteFS, moduleMap } = await hasteMap.build();
 
-    const worker = new Worker(join(dirname(fileURLToPath(import.meta.url)), '../worker.ts'), {
+    const worker = new Worker(join(__dirname, '../worker.ts'), {
         enableWorkerThreads: true
     });
 
@@ -72,7 +71,7 @@ export async function bundle(entrypoint: string, output: string | undefined) {
     );
 
     const outputContent = [
-        fs.readFileSync(join(dirname(fileURLToPath(import.meta.url)), './require.js'), 'utf8'),
+        fs.readFileSync(join(__dirname, './require.js'), 'utf8'),
         ...results,
         `requireModule(0)`
     ].join('\n');

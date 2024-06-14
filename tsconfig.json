@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "module": "ESNext",
+    "module": "commonjs",
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
     "target": "es2022",
-    "moduleResolution": "Bundler", 
+    "moduleResolution": "node",
     "allowJs": true,
     "noEmit": false,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noUncheckedIndexedAccess": true,
@@ -18,8 +18,9 @@
     "lib": ["es2022", "dom", "dom.iterable"],
     "types": ["node"]
   },
-  "include": ["./src/**/*"],
+  "include": ["src/**/*.ts"],
   "ts-node": {
     "esm": true
-  }
+  },
+  "exclude": ["node_modules"]
 }
