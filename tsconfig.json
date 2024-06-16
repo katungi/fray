@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "module": "commonjs",
+    "module": "ESNext",
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
     "target": "es2022",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "allowJs": true,
     "noEmit": false,
-    "verbatimModuleSyntax": false,
+    "verbatimModuleSyntax": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noUncheckedIndexedAccess": true,
@@ -21,6 +21,5 @@
   "include": ["src/**/*.ts"],
   "ts-node": {
     "esm": true
-  },
-  "exclude": ["node_modules"]
+  }
 }
