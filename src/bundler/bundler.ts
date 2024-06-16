@@ -4,10 +4,13 @@ import { fileURLToPath } from 'url';
 import Resolver from 'jest-resolve';
 import fs from 'fs';
 import { Worker } from 'jest-worker';
-import { transformFile } from './worker';
+import { transformFile } from './worker';  // Ensure this path is correct
 import { resolveModuleDependencies } from './resolver';
 
-const rootMap = join(dirname(fileURLToPath(import.meta.url)), '../product');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const rootMap = join(__dirname, '../product');
 
 //@ts-ignore
 const hasteMap = new JestHasteMap.default({
@@ -25,8 +28,8 @@ const wrapModule = (id: number, code: string) => `define(${id}, function(require
 export async function bundle(entrypoint: string, output: string | undefined) {
     const { hasteFS, moduleMap } = await hasteMap.build();
 
-    const worker = new Worker(join(dirname(fileURLToPath(import.meta.url)), '../worker.ts'), {
-        enableWorkerThreads: true
+    const worker = new Worker(join(__dirname, '../worker.ts'), {
+        enableWorkerThreads: true,
     });
 
     //@ts-ignore
@@ -34,7 +37,7 @@ export async function bundle(entrypoint: string, output: string | undefined) {
         extensions: ['.js'],
         hasCoreModules: false,
         rootDir: rootMap,
-        moduleDirectory: ['node_modules']
+        moduleDirectory: ['node_modules'],
     });
 
     let seenFiles = new Set<string>();
@@ -60,21 +63,21 @@ export async function bundle(entrypoint: string, output: string | undefined) {
 
     const results = await Promise.all(
         Array.from(modules).reverse().map(async ([module, { id, code, dependencyMap }]) => {
-            let newCode = await transformFile(code, worker);
+            let newCode: string | undefined = await transformFile(code);
             for (const [dependencyName, dependencyPath] of dependencyMap) {
                 newCode = newCode?.replace(
                     new RegExp(`require\\(('|")${dependencyName.replace(/[\/.]/g, '\\$&')}\\1\\)`),
                     `require(${modules.get(dependencyPath)!.id})`,
                 );
             }
-            return wrapModule(id, newCode);
+            return wrapModule(id, newCode as string);
         })
     );
 
     const outputContent = [
-        fs.readFileSync(join(dirname(fileURLToPath(import.meta.url)), './require.js'), 'utf8'),
+        fs.readFileSync(join(__dirname, './require.js'), 'utf8'),
         ...results,
-        `requireModule(0)`
+        `requireModule(0)`,
     ].join('\n');
 
     if (output) {
